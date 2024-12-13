@@ -75,8 +75,11 @@ Para acessar a documentação Swagger da API, acesse http://localhost:5000/swagg
 
 # Exemplos de Uso da API
 
+```
+```bash
 
-# Listar Clientes
+
+Listar Clientes
 GET /clientes
 Exemplo de Resposta:
 [
@@ -91,8 +94,11 @@ Exemplo de Resposta:
         "uf": "SP"
     }
 ]
+```
+```bash
 
-# Cadastrar Cliente
+
+Cadastrar Cliente
 POST /clientes
 Corpo da Solicitação:
 {
@@ -105,14 +111,20 @@ Corpo da Solicitação:
     "uf": "RJ"
 }
 
+```
+```bash
 
-# Exemplo de Resposta:
+
+Exemplo de Resposta:
 {
     "message": "Cliente cadastrado com sucesso!"
 }
 
+```
+```bash
 
-# Atualizar Cliente
+
+Atualizar Cliente
 PUT /clientes/{id}
 Corpo da Solicitação:
 {
@@ -125,8 +137,11 @@ Corpo da Solicitação:
     "uf": "RJ"
 }
 
+```
+```bash
 
-# Deletar Cliente
+
+Deletar Cliente
 DELETE /clientes/{id}
 Exemplo de Resposta:
 {
