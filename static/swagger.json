@@ -1,0 +1,163 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "API para gerenciar clientes.",
+      "version": "1.0.0",
+      "title": "API de Clientes",
+      "contact": {
+        "email": "mvp2024@puc.com"
+      }
+    },
+    "host": "127.0.0.1:5000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Clientes",
+        "description": "Gerenciamento de clientes."
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/listar_clientes": {
+        "get": {
+          "tags": ["Clientes"],
+          "summary": "Listar todos os clientes",
+          "description": "Retorna a lista de todos os clientes cadastrados.",
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Lista de clientes",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Cliente"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/cadastrar_cliente": {
+        "post": {
+          "tags": ["Clientes"],
+          "summary": "Cadastrar um novo cliente",
+          "description": "Adiciona um novo cliente ao banco de dados.",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Dados do novo cliente",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Cliente"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Cliente cadastrado com sucesso"
+            },
+            "400": {
+              "description": "CPF já cadastrado"
+            }
+          }
+        }
+      },
+      "/editar_cliente/{id}": {
+        "put": {
+          "tags": ["Clientes"],
+          "summary": "Atualizar os dados de um cliente existente",
+          "description": "Atualiza as informações de um cliente existente.",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID do cliente",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Dados atualizados do cliente",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Cliente"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Cliente atualizado com sucesso"
+            },
+            "404": {
+              "description": "Cliente não encontrado"
+            }
+          }
+        }
+      },
+      "/deletar_cliente/{id}": {
+        "delete": {
+          "tags": ["Clientes"],
+          "summary": "Deletar um cliente",
+          "description": "Remove um cliente do banco de dados pelo ID.",
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID do cliente",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Cliente removido com sucesso"
+            },
+            "404": {
+              "description": "Cliente não encontrado"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Cliente": {
+        "type": "object",
+        "required": ["nome", "cpf", "dt_nasc", "logradouro", "cep", "cidade", "uf"],
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "cpf": {
+            "type": "string"
+          },
+          "dt_nasc": {
+            "type": "string"
+          },
+          "logradouro": {
+            "type": "string"
+          },
+          "cep": {
+            "type": "string"
+          },
+          "cidade": {
+            "type": "string"
+          },
+          "uf": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  
+
+  
